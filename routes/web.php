@@ -12,5 +12,11 @@
 */
 
 Route::get('/', 'NoteController');
-Route::get('/{note}', 'NoteController@getNoteValue');
+Route::get('/note/{note}', 'NoteController@getNoteValue');
 
+Route::get('/env', function () {
+    dump(config('app.name'));
+    dump(config('app.env'));
+    dump(config('app.debug'));
+    dump(config('app.url'));
+});

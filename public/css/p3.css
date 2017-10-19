@@ -1,0 +1,19 @@
+.container {
+	max-width: 40%;
+	margin-top: 100px;
+}
+
+h1 {
+	padding-bottom: 10px;
+}
+p {
+	padding-bottom: 15px;
+}
+
+.lineOne, .lineTwo {
+	padding-bottom: 15px;
+}
+
+.lineOne {
+	margin-left: 3px;
+}
