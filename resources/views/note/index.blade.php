@@ -11,3 +11,9 @@
 @section('form')
 	@include('note.form')
 @endsection
+
+@section('result')
+	@if(($note != null) && ($noteTwo != null))
+		The interval between {{ $note }} and {{ $noteTwo }} is a {{ $intervalName }}
+	@endif 
+@endsection
