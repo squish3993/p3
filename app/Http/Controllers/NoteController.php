@@ -3,27 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\Validnote;
 
 class NoteController extends Controller
 {
-    
-    	public function getNoteValue(Request $request)
-    	{ 
-
-    		$noteValues = ['c' => 0, 'd' => 2, 'e' => 4, 'f' => 5, 'g' => 7, 'a' => 9, 'b'=>11];
-    		$intervalNames = ['Unison', 'Minor 2nd', 'Major 2nd', 'Minor 3rd', 'Major 3rd', 'Perfect 4th', 'Tri-Tone (Also called Augmented 4th or Diminished 5th)', 'Perfect 5th', 'Minor 6th', 'Major 6th', 'Minor 7th', 'Major 7th', 'Octave', 'Minor 9th', 'Major 9th', 'Minor 10th', 'Major 10th', 'Perfect 11th', 'Augmented 11th or Dimished 12th', 'Perfect 12th', 'Minor 13th', 'Major 13th', 'Minor 14th', 'Major 14th'];
+    			
+			public function getNoteValue(Request $request)
+    		{ 
+    			
+    			if ($request->has('note'))
+    			{
+    				$this->validate($request, [
+    				'note'=> ['required', new Validnote],
+    				'noteTwo'=> ['required', new Validnote]
+    			]);
+    			}
 
     		$note = strtolower($request->input('note', null));
     		$noteTwo = strtolower($request->input('noteTwo', null));
     		$accidental = $request->input('accidental');
-    		$accidentalTwo=$request->input('accidentalTwo');
+    		$accidentalTwo = $request->input('accidentalTwo');
     		$octave = $request->input('octave');
     		$intervalName = ''; 
+    		
+    		$noteValues = ['c' => 0, 'd' => 2, 'e' => 4, 'f' => 5, 'g' => 7, 'a' => 9, 'b'=>11];
+    		$intervalNames = ['Unison', 'Minor 2nd', 'Major 2nd', 'Minor 3rd', 'Major 3rd', 'Perfect 4th', 'Tri-Tone (Also called Augmented 4th or Diminished 5th)', 'Perfect 5th', 'Minor 6th', 'Major 6th', 'Minor 7th', 'Major 7th', 'Octave', 'Minor 9th', 'Major 9th', 'Minor 10th', 'Major 10th', 'Perfect 11th', 'Augmented 11th or Dimished 12th', 'Perfect 12th', 'Minor 13th', 'Major 13th', 'Minor 14th', 'Major 14th'];
+
 			
 		
-			
+			//dump($request);
+
 			if ($note && $noteTwo)
-			{
+			{	
+
+
+
 				$noteValue = $noteValues[$note];
 				if ($accidental=='sharp') { #Adds one to the scaler value if the note is sharp
 					$noteValue+=1;
@@ -73,10 +87,17 @@ class NoteController extends Controller
 			
     		return view('note.index')->with([
     			'intervalName' => $intervalName, 
-    			'note' => $note,
-    			'noteTwo' => $noteTwo
+    			'note' => strtoupper($note),
+    			'noteTwo' => strtoupper($noteTwo),
+    			'accidental' => $accidental,
+    			'accidentalTwo' => $accidentalTwo
     			]);
-    	}
-}
+    		}
+    		
+    	
+
+
+	
+} #eoc
 
 

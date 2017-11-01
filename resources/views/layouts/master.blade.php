@@ -34,11 +34,8 @@
 			@yield('form')
 		</section>
 
-		<section>
-			<div class='alert alert-info text-center'>
+		<section>			
 				@yield('result')
-			</div>
-
 		</section>
 	</body>
 </html>

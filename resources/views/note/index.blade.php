@@ -14,6 +14,8 @@
 
 @section('result')
 	@if(($note != null) && ($noteTwo != null))
-		The interval between {{ $note }} and {{ $noteTwo }} is a {{ $intervalName }}
+		<div class='alert alert-info text-center container'>
+			The interval between {{ $note }} {{ $accidental }} and {{ $noteTwo }} {{ $accidentalTwo }} is a {{ $intervalName }}
+		</div>
 	@endif 
 @endsection

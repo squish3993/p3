@@ -1,4 +1,7 @@
-<form method='Get' class='form-inline text-center' action='/'>
+<form method='GET' class='form-inline text-center' action='/'>
+
+	
+
 	<div class="form-group">
 		<div class="lineOne">
 			<label for="note">Enter your first note (required):</label>

@@ -11,8 +11,9 @@
 |
 */
 
-
 Route::get('/', 'NoteController@getNoteValue');
+//Route::get('/validater', 'NoteController@getNoteValue');
+
 
 Route::get('/env', function () {
     dump(config('app.name'));
