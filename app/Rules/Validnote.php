@@ -48,6 +48,6 @@ class Validnote implements Rule
      */
     public function message()
     {
-        return 'Please enter a valid note';
+        return 'Please enter a valid musical note';
     }
 }
